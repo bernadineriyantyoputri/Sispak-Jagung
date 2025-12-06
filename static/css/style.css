@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #FAFAF7;
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    width: 85%;
+    margin: 40px auto;
+    background: #FFFFFF;
+    padding: 40px 50px;
+    border-radius: 22px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.05);
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #1F3B14;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    background: #6DBE45;
+    border-radius: 50%;
+}
+
+.content {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-box h3 {
+    font-size: 22px;
+    color: #1F3B14;
+    margin-bottom: 10px;
+}
+
+.text-box h1 {
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1F3B14;
+    margin-bottom: 20px;
+}
+
+.text-box p {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 35px;
+    width: 420px;
+}
+
+.btn-main {
+    background: #FFE45E;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #1F3B14;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.btn-small {
+    background: #DAF1D5;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #1F3B14;
+    text-decoration: none;
+}
+
+.image-box img {
+    width: 360px;
+    filter: drop-shadow(0px 12px 35px rgba(0,0,0,0.12));
+}

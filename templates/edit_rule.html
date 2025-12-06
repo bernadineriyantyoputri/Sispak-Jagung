@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Edit Rule</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { background:#f5f7fa; }
+    .cond-row { background:#fdfdfd; padding:10px; border-radius:6px; margin-bottom:10px; }
+  </style>
+
+  <script>
+    function addCondition(){
+      let box = document.getElementById("cond-box");
+      let div = document.createElement("div");
+      div.className = "cond-row row g-3";
+      div.innerHTML = `
+        <div class="col-md-6">
+          <select name="cond_symptom" class="form-select">
+            {% for k,l in symptoms %}
+              <option value="{{k}}">{{l}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <input type="number" name="cond_weight" class="form-control" step="0.01" value="1.0">
+        </div>
+
+        <div class="col-md-3">
+          <button type="button" class="btn btn-danger" onclick="this.parentNode.parentNode.remove()">Hapus</button>
+        </div>
+      `;
+      box.appendChild(div);
+    }
+  </script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">🌽 Expert System | Jagung</a>
+    <a class="btn btn-light btn-sm" href="/admin/rules">Kembali</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+
+      <h3 class="mb-3">{% if action=='new' %}Buat Rule Baru{% else %}Edit Rule{% endif %}</h3>
+
+      <form method="POST">
+
+        <label class="form-label">ID Rule</label>
+        <input type="text" name="id" class="form-control mb-3" value="{{ rule.id if rule else '' }}" {% if action=='edit' %}readonly{% endif %}>
+
+        <label class="form-label">Nama Rule</label>
+        <input type="text" name="name" class="form-control mb-3" value="{{ rule.name if rule else '' }}">
+
+        <label class="form-label">Deskripsi</label>
+        <textarea name="description" class="form-control mb-3" rows="3">{{ rule.description if rule else '' }}</textarea>
+
+        <label class="form-label">Rule CF</label>
+        <input type="number" name="rule_cf" step="0.01" class="form-control mb-3" value="{{ rule.rule_cf if rule else '1.0' }}">
+
+        <h5 class="mt-4">Conditions</h5>
+
+        <div id="cond-box">
+          {% if rule %}
+            {% for c in rule.conditions %}
+              <div class="cond-row row g-3">
+                <div class="col-md-6">
+                  <select name="cond_symptom" class="form-select">
+                    {% for k,l in symptoms %}
+                      <option value="{{k}}" {% if k==c.symptom %}selected{% endif %}>{{l}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <input type="number" name="cond_weight" class="form-control" step="0.01" value="{{c.weight}}">
+                </div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-danger" onclick="this.parentNode.parentNode.remove()">Hapus</button>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <button type="button" class="btn btn-secondary mt-2" onclick="addCondition()">+ Tambah Kondisi</button>
+
+        <button type="submit" class="btn btn-primary mt-4 w-100">Simpan</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

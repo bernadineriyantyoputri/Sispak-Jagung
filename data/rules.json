@@ -1,0 +1,82 @@
+{
+  "rules": [
+    {
+      "id": "smut",
+      "name": "Maize Smut (Ustilago maydis)",
+      "name_id": "Penyakit Gosong Jagung",
+      "description": "Massa spora hitam pada bunga atau tongkol, tassel abnormal, tongkol terdeformasi.",
+      "rule_cf": 0.9,
+      "conditions": [
+        {"symptom": "tassel_abnormal", "weight": 0.8},
+        {"symptom": "black_spore_masses", "weight": 1.0},
+        {"symptom": "ear_deformed_or_no_grains", "weight": 0.7}
+      ]
+    },
+    {
+      "id": "msv",
+      "name": "Maize Streak Virus (MSV)",
+      "name_id": "Virus Streak Jagung",
+      "description": "Garis-garis kuning pada daun, klorosis, pertumbuhan kerdil.",
+      "rule_cf": 0.85,
+      "conditions": [
+        {"symptom": "chlorosis_or_yellow_streaks", "weight": 0.9},
+        {"symptom": "small_round_spots_on_young_leaves", "weight": 0.6},
+        {"symptom": "stunted_plants", "weight": 0.7}
+      ]
+    },
+    {
+      "id": "gls",
+      "name": "Gray Leaf Spot",
+      "name_id": "Bercak Daun Abu-abu",
+      "description": "Bercak coklat-abu memanjang sejajar tulang daun, biasanya muncul di daun bawah.",
+      "rule_cf": 0.88,
+      "conditions": [
+        {"symptom": "elongated_brown_gray_spots", "weight": 0.9},
+        {"symptom": "spots_parallel_to_veins", "weight": 0.7},
+        {"symptom": "lower_leaves_first", "weight": 0.6}
+      ]
+    },
+    {
+      "id": "tlb",
+      "name": "Turcicum Leaf Blight",
+      "name_id": "Hawar Daun Turcicum",
+      "description": "Lesi berbentuk gelendong berwarna coklat kehitaman pada daun, dimulai dari daun bawah.",
+      "rule_cf": 0.9,
+      "conditions": [
+        {"symptom": "spindle_shaped_necrotic_lesions", "weight": 1.0},
+        {"symptom": "lower_leaves_first", "weight": 0.7}
+      ]
+    },
+    {
+      "id": "ear_rot",
+      "name": "Ear Rot (Diplodia)",
+      "name_id": "Busuk Tongkol Jagung",
+      "description": "Kelobot pucat tidak beraturan, pertumbuhan putih seperti kapas antar biji, bintik hitam pycnidia.",
+      "rule_cf": 0.92,
+      "conditions": [
+        {"symptom": "bleached_areas_on_husks", "weight": 0.8},
+        {"symptom": "white_cottony_growth_between_kernels", "weight": 1.0},
+        {"symptom": "black_pycnidia_on_kernels", "weight": 0.8}
+      ]
+    }
+  ],
+
+  "symptoms": {
+    "tassel_abnormal": "Bunga jantan (tassel) tidak normal / cacat",
+    "black_spore_masses": "Gumpalan spora hitam pada bunga atau tongkol",
+    "ear_deformed_or_no_grains": "Tongkol terdeformasi atau tidak ada biji",
+
+    "small_round_spots_on_young_leaves": "Bercak bulat kecil pada daun muda",
+    "spots_parallel_to_veins": "Bercak memanjang sejajar dengan tulang daun",
+    "chlorosis_or_yellow_streaks": "Klorosis atau garis kuning di sepanjang tulang daun",
+    "stunted_plants": "Pertumbuhan kerdil atau kematian dini",
+
+    "elongated_brown_gray_spots": "Bercak coklat keabu memanjang pada daun",
+    "spindle_shaped_necrotic_lesions": "Lesi nekrotik berbentuk gelendong",
+    "lower_leaves_first": "Gejala muncul pertama kali pada daun bagian bawah",
+
+    "bleached_areas_on_husks": "Bagian pucat tidak beraturan pada kelobot",
+    "white_cottony_growth_between_kernels": "Pertumbuhan putih seperti kapas antar biji",
+    "black_pycnidia_on_kernels": "Bintik hitam kecil (pycnidia) pada biji"
+  }
+}

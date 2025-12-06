@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar - Diagnosa Jagung</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", sans-serif;
+            background: #fbfbf7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 50px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left {
+            max-width: 520px;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #0a3d0a;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            color: #0a3d0a;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: #ffde59;
+            padding: 15px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .btn:hover {
+            background: #ffd840;
+        }
+
+        .top-btn {
+            position: absolute;
+            right: 60px;
+            top: 30px;
+            background: #def4d1;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #0a3d0a;
+            font-weight: 600;
+        }
+
+        .corn-img {
+            width: 450px;
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <div class="subtitle">Diagnosa Penyakit Jagung</div>
+
+            <h1>CornFix</h1>
+
+            <p>
+                Mulai analisis gejala dan dapatkan hasil diagnosa secara otomatis.
+            </p>
+
+            <!-- Ubah endpoint sesuai app.py -->
+            <a href="{{ url_for('index') }}" class="btn">Mulai Diagnosa</a>
+        </div>
+
+        <img src="{{ url_for('static', filename='corn.png') }}" class="corn-img">
+    </div>
+
+</body>
+</html>
