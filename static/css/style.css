@@ -1,89 +1,154 @@
+/* ========================================================= */
+/* CORNFIX — GLOBAL VARIABLES */
+/* ========================================================= */
+:root {
+    --cornfix-dark: #0b3d02;
+    --cornfix-yellow: #ffd744;
+    --cornfix-white: white;
+    --cornfix-bg-light: #f5f7fa;
+}
+
+/* GLOBAL BODY */
 body {
     margin: 0;
     padding: 0;
-    background: #FAFAF7;
     font-family: "Inter", sans-serif;
+    background: var(--cornfix-bg-light);
 }
 
-.container {
-    width: 85%;
-    margin: 40px auto;
-    background: #FFFFFF;
-    padding: 40px 50px;
-    border-radius: 22px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.05);
-}
+/* ========================================================= */
+/* 1. LOGIN / REGISTER PAGE */
+/* ========================================================= */
 
-.topnav {
+.cornfix-bg-img {
+    background: url('/static/background_cornfix.jpg') no-repeat center center/cover;
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Overlay gelap tipis */
+.cornfix-bg-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+/* Judul CORNFIX di tengah */
+.cornfix-title {
+    font-size: 48px;
     font-weight: 600;
-    font-size: 20px;
-    color: #1F3B14;
+    color: var(--cornfix-white);
+    text-shadow: 0 0 12px rgba(0,0,0,0.8);
+    z-index: 2;
+    margin-bottom: 25px;
 }
 
-.dot {
-    width: 14px;
-    height: 14px;
-    background: #6DBE45;
-    border-radius: 50%;
+/* LOGIN CARD */
+.login-card {
+    width: 400px;
+    border-radius: 20px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
+    z-index: 2;
 }
 
-.content {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.text-box h3 {
-    font-size: 22px;
-    color: #1F3B14;
-    margin-bottom: 10px;
-}
-
-.text-box h1 {
-    font-size: 58px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: #1F3B14;
+.login-header {
+    color: var(--cornfix-dark);
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
-.text-box p {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 35px;
-    width: 420px;
+/* INPUT FORM */
+.custom-input {
+    border-radius: 12px;
+    border: 1.5px solid #dfe7db;
+    background: #fff;
 }
 
-.btn-main {
-    background: #FFE45E;
-    padding: 14px 28px;
-    border-radius: 10px;
+.custom-input:focus {
+    border-color: var(--cornfix-dark);
+    box-shadow: 0 0 6px rgba(11, 61, 2, 0.2);
+}
+
+/* BUTTON LOGIN */
+.login-btn {
+    background-color: var(--cornfix-yellow) !important;
+    border-color: var(--cornfix-yellow) !important;
+    color: var(--cornfix-dark);
     font-weight: 600;
-    color: #1F3B14;
-    text-decoration: none;
     font-size: 18px;
+    padding: 10px;
+    border-radius: 12px;
 }
 
-.btn-small {
-    background: #DAF1D5;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #1F3B14;
+.login-btn:hover {
+    background-color: #f7c72f !important;
+    border-color: #f7c72f !important;
+}
+
+/* LINK REGISTER */
+.login-link {
+    color: var(--cornfix-dark);
+    font-weight: bold;
     text-decoration: none;
 }
 
-.image-box img {
-    width: 360px;
-    filter: drop-shadow(0px 12px 35px rgba(0,0,0,0.12));
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================= */
+/* 2. DASHBOARD / DIAGNOSA PAGE */
+/* ========================================================= */
+
+.navbar {
+    background-color: var(--cornfix-dark) !important;
+}
+
+.navbar-brand {
+    color: var(--cornfix-white) !important;
+}
+
+/* Tombol Diagnosa */
+.btn-primary {
+    background-color: var(--cornfix-dark) !important;
+    border-color: var(--cornfix-dark) !important;
+    color: var(--cornfix-white) !important;
+}
+
+/* Tombol Export Logs */
+.btn-warning {
+    background-color: var(--cornfix-yellow) !important;
+    border-color: var(--cornfix-yellow) !important;
+    color: var(--cornfix-dark) !important;
+    font-weight: 600;
+}
+
+/* Tombol Edit Rules */
+.btn-light {
+    background-color: var(--cornfix-white) !important;
+    border-color: var(--cornfix-white) !important;
+    color: var(--cornfix-dark) !important;
+}
+
+/* Card Gejala */
+.card-symptom {
+    border: 5px solid #e0e0e0;
+    background: var(--cornfix-white);
+}
+
+.card-symptom:hover {
+    background: #f0f0f0;
+    border-color: var(--cornfix-dark);
 }

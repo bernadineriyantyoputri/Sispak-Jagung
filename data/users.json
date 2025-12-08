@@ -3,6 +3,10 @@
     {
       "username": "nadn",
       "password": "12345"
+    },
+    {
+      "username": "yin@gmail.com",
+      "password": "12345678"
     }
   ]
 }

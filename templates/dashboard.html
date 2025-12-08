@@ -10,7 +10,11 @@
             margin: 0;
             padding: 0;
             font-family: "Inter", sans-serif;
-            background: #fbfbf7;
+
+            /* --- LATAR BELAKANG HIJAU GELAP + BLUR --- */
+            background: #0b3d02;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
         }
 
         .container {
@@ -18,11 +22,17 @@
             max-width: 1200px;
             margin: 40px auto;
             padding: 50px;
-            background: white;
+
+            /* Glass effect biar sinkron dengan bg blur */
+            background: rgb(255, 255, 255);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
             border-radius: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.25);
         }
 
         .left {
@@ -45,7 +55,7 @@
 
         p {
             font-size: 18px;
-            color: #444;
+            color: #2e2e2e;
             margin-bottom: 40px;
             line-height: 1.5;
         }
@@ -64,18 +74,6 @@
             background: #ffd840;
         }
 
-        .top-btn {
-            position: absolute;
-            right: 60px;
-            top: 30px;
-            background: #def4d1;
-            padding: 12px 25px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #0a3d0a;
-            font-weight: 600;
-        }
-
         .corn-img {
             width: 450px;
             margin-right: 10px;
@@ -89,13 +87,12 @@
         <div class="left">
             <div class="subtitle">Diagnosa Penyakit Jagung</div>
 
-            <h1>CornFix</h1>
+            <h1>CORNFIX</h1>
 
             <p>
                 Mulai analisis gejala dan dapatkan hasil diagnosa secara otomatis.
             </p>
 
-            <!-- Ubah endpoint sesuai app.py -->
             <a href="{{ url_for('index') }}" class="btn">Mulai Diagnosa</a>
         </div>
 

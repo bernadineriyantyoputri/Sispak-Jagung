@@ -6,21 +6,80 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    body { background: #f5f7fa; }
-    .card-result { border-left: 5px solid #0d6efd; }
+
+    /* ====== WARNA UTAMA CORNFIX ====== */
+    :root {
+      --green-dark: #0b3d02;      /* Hijau gelap */
+      --corn-yellow: #ffde59;     /* Kuning CornFix */
+      --pastel-green: #def4d1;    /* Hijau pastel */
+      --soft-bg: #fbfbf7;         /* Background lembut */
+    }
+
+    body { 
+      background: var(--soft-bg);
+    }
+
+    /* Card hasil */
+    .card-result { 
+      border-left: 5px solid var(--green-dark);
+      border-radius: 10px;
+      background-color: var(--pastel-green);
+    }
+
+    /* Navbar */
+    .navbar-brand {
+      font-weight: bold;
+      color: white;
+    }
+
+    /* Tombol utama CornFix */
+    .btn-corn {
+      background-color: var(--corn-yellow);
+      color: var(--green-dark);
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+    }
+    .btn-corn:hover {
+      background-color: #f7d64f;
+      color: var(--green-dark);
+    }
+
+    /* Tombol putih */
+    .btn-light-custom {
+      background: #ffffff;
+      color: var(--green-dark);
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid #eaeaea;
+    }
+    .btn-light-custom:hover {
+      background: #f1f1f1;
+    }
+
+    /* Judul */
+    h3, h4, h5 {
+      color: var(--green-dark);
+      font-weight: bold;
+    }
+
+    summary {
+      color: var(--green-dark);
+    }
+
   </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<!-- NAVBAR (dibuat sesuai index: hijau gelap) -->
+<nav class="navbar navbar-expand-lg" style="background-color: var(--green-dark);">
   <div class="container">
-    <a class="navbar-brand" href="/">🌽 Expert System | Jagung</a>
+    <a class="navbar-brand" href="/">CORNFIX</a>
 
     <div>
-      <a href="/" class="btn btn-light btn-sm">Home</a>
-      <a href="/admin/rules" class="btn btn-light btn-sm ms-2">Rule Editor</a>
-      <a href="/export/logs" class="btn btn-warning btn-sm ms-2">Export Logs</a>
+      <a href="/" class="btn btn-light-custom btn-sm">Home</a>
+ 
     </div>
   </div>
 </nav>
@@ -29,7 +88,7 @@
 
   <div class="card shadow-sm">
     <div class="card-body">
-      <h3>🔍 Hasil Diagnosa</h3>
+      <h3>Hasil Diagnosa</h3>
 
       {% if model_probs %}
         <h5 class="mt-4">Prediksi Model (Opsional)</h5>
@@ -40,18 +99,18 @@
         </ul>
       {% endif %}
 
-      <h5 class="mt-4">Hasil Forward Chaining + Certainty Factor</h5>
+      <h5 class="mt-4">Forward Chaining + Certainty Factor</h5>
 
       {% if results %}
         {% for r in results %}
           <div class="card card-result shadow-sm mt-3 p-3">
             <h4>{{ r.name }}</h4>
-            <p class="text-muted mb-2">{{ r.description }}</p>
+            <p class="text-muted">{{ r.description }}</p>
 
             <div><strong>Certainty Factor:</strong> {{ "%.4f"|format(r.cf) }}</div>
 
             <details class="mt-2">
-              <summary class="text-primary" style="cursor:pointer;">Lihat Evidence</summary>
+              <summary style="cursor:pointer;">Lihat Evidence</summary>
               <ul class="mt-2">
                 {% for sk,sv in r.conditions_evidence.items() %}
                   <li>{{ sk }} → {{ "%.4f"|format(sv) }}</li>

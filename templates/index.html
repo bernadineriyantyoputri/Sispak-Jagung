@@ -2,83 +2,131 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>Sistem Pakar Diagnosa Jagung</title>
+  <title>Diagnosa Penyakit Jagung - CornFix</title>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
-      background: #f5f7fa;
+      background: #fbfbf7;
+      font-family: "Inter", sans-serif;
     }
-    .card-symptom {
-      transition: all 0.2s ease;
-    }
-    .card-symptom:hover {
-      background: #eef2f7;
-      transform: scale(1.01);
+
+    /* NAVBAR */
+    .navbar {
+      background: #0a3d0a !important; /* Hijau gelap */
     }
     .navbar-brand {
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      font-size: 22px;
+      color: white !important;
+    }
+    .navbar .btn-light {
+      background: #def4d1;
+      color: #0a3d0a;
+      border: none;
+      font-weight: 600;
+    }
+    .navbar .btn-warning {
+      background: #ffde59;
+      border: none;
+      color: #0a3d0a;
+      font-weight: 600;
+    }
+    .navbar .btn-danger {
+      background: #d9534f;
+      border: none;
+      font-weight: 600;
+    }
+
+    /* CARD */
+    .card {
+      border-radius: 20px;
+      border: none;
+    }
+
+    /* CARD GEJALA */
+    .card-symptom {
+      transition: 0.2s;
+      border-radius: 12px;
+      border: 1px solid #e6e6e6;
+    }
+    .card-symptom:hover {
+      background: #def4d1;
+      transform: scale(1.01);
+    }
+
+    /* JUDUL */
+    h3 {
+      color: #0a3d0a;
+      font-weight: 700;
+    }
+
+    /* TOMBOL DIAGNOSA */
+    .btn-diagnose {
+      background: #ffde59;
+      color: #0a3d0a;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+    }
+    .btn-diagnose:hover {
+      background: #ffd840;
     }
   </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="/">🌽 Expert System | Jagung</a>
+    <a class="navbar-brand">CORNFIX</a>
 
     <div>
-      <a href="/admin/rules" class="btn btn-light btn-sm">Rule Editor</a>
-      <a href="/export/logs" class="btn btn-warning btn-sm ms-2">Export Logs</a>
-      <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm ms-2">Logout</a>  <!-- Tombol Logout -->
+      <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm ms-2">Logout</a>
     </div>
   </div>
 </nav>
 
+<!-- CONTENT -->
 <div class="container mt-4">
-  <div class="card shadow-sm">
-    <div class="card-body">
+  <div class="card shadow-sm p-4">
 
-      <h3 class="mb-3">Diagnosa Penyakit Jagung</h3>
-      <p class="text-muted">Isi gejala berikut dan (opsional) upload foto daun/tongkol.</p>
+    <h3 class="mb-3">Diagnosa Penyakit Jagung</h3>
+   
 
-      <form method="POST" action="/diagnose" enctype="multipart/form-data">
+    <form method="POST" action="/diagnose" enctype="multipart/form-data">
 
-        <div class="mb-3">
-          <label class="form-label">Upload Gambar (Opsional)</label>
-          <input class="form-control" type="file" name="image" accept="image/*">
-        </div>
 
-        <hr>
 
-        <h5 class="mb-3 mt-4">Pilih Tingkat Keyakinan Gejala</h5>
+      <hr>
 
-        <div class="row">
-          {% for key,label in symptoms.items() %}
-            <div class="col-md-6">
-              <div class="card card-symptom mb-3 p-3">
-                <strong>{{ label }}</strong>
-                <div class="mt-2">
-                  <label class="me-2"><input type="radio" name="{{key}}" value="0" checked> Tidak</label>
-                  <label class="me-2"><input type="radio" name="{{key}}" value="0.5"> Mungkin</label>
-                  <label><input type="radio" name="{{key}}" value="1"> Ya</label>
-                </div>
+      <h5 class="mb-3 mt-4" style="color:#0a3d0a; font-weight:600;">Pilih Tingkat Keyakinan Gejala</h5>
+
+      <div class="row">
+        {% for key,label in symptoms.items() %}
+          <div class="col-md-6">
+            <div class="card card-symptom mb-3 p-3">
+              <strong style="color:#0a3d0a;">{{ label }}</strong>
+              <div class="mt-2">
+                <label class="me-3"><input type="radio" name="{{key}}" value="0" checked> Tidak</label>
+                <label class="me-3"><input type="radio" name="{{key}}" value="0.5"> Mungkin</label>
+                <label><input type="radio" name="{{key}}" value="1"> Ya</label>
               </div>
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
+      </div>
 
-        <button type="submit" class="btn btn-primary mt-3 w-100 py-2 fw-bold">
-          🔍 Diagnosa Sekarang
-        </button>
+      <button type="submit" class="btn btn-diagnose mt-3 w-100 py-2">
+        Diagnosa Sekarang
+      </button>
 
-      </form>
+    </form>
 
-    </div>
   </div>
 </div>
 

@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Diagnosa Tanaman</title>
+  <title>CornFix - Login</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { background: #f0f2f5; }
-    .card { border-radius: 15px; }
-    .btn-primary { background-color: #28a745; border-color: #28a745; }
-    .btn-primary:hover { background-color: #218838; border-color: #1e7e34; }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-  <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow p-4" style="width: 400px;">
-      <h3 class="text-center mb-4">Login</h3>
+
+<body class="cornfix-bg-img">
+
+  <!-- Overlay agar teks tetap terbaca -->
+  <div class="cornfix-overlay"></div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center vh-100 position-relative">
+
+    <!-- NAMA WEBSITE -->
+    <h1 class="cornfix-title mb-4 text-center">CornFix</h1>
+
+    <!-- CARD LOGIN -->
+    <div class="login-card">
+
+      <h3 class="text-center login-header">Login</h3>
+
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, msg in messages %}
@@ -26,20 +34,32 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
+
       <form method="POST">
+
         <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" name="username" class="form-control" required>
+          <label class="form-label fw-semibold">Username</label>
+          <input type="text" name="username" class="form-control custom-input" required>
         </div>
+
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" required>
+          <label class="form-label fw-semibold">Password</label>
+          <input type="password" name="password" class="form-control custom-input" required>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        <button type="submit" class="btn w-100 mt-2 login-btn">Login</button>
+
       </form>
-      <p class="text-center mt-3">Belum punya akun? <a href="{{ url_for('register') }}">Register</a></p>
+
+      <p class="text-center mt-3">
+        Belum punya akun?
+        <a href="{{ url_for('register') }}" class="login-link">Register</a>
+      </p>
+
     </div>
+
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
