@@ -1,131 +1,63 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Hasil Diagnosa</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-
-    /* ====== WARNA UTAMA CORNFIX ====== */
-    :root {
-      --green-dark: #0b3d02;      /* Hijau gelap */
-      --corn-yellow: #ffde59;     /* Kuning CornFix */
-      --pastel-green: #def4d1;    /* Hijau pastel */
-      --soft-bg: #fbfbf7;         /* Background lembut */
-    }
-
-    body { 
-      background: var(--soft-bg);
-    }
-
-    /* Card hasil */
-    .card-result { 
-      border-left: 5px solid var(--green-dark);
-      border-radius: 10px;
-      background-color: var(--pastel-green);
-    }
-
-    /* Navbar */
-    .navbar-brand {
-      font-weight: bold;
-      color: white;
-    }
-
-    /* Tombol utama CornFix */
-    .btn-corn {
-      background-color: var(--corn-yellow);
-      color: var(--green-dark);
-      font-weight: bold;
-      border-radius: 8px;
-      border: none;
-    }
-    .btn-corn:hover {
-      background-color: #f7d64f;
-      color: var(--green-dark);
-    }
-
-    /* Tombol putih */
-    .btn-light-custom {
-      background: #ffffff;
-      color: var(--green-dark);
-      border-radius: 6px;
-      font-weight: 500;
-      border: 1px solid #eaeaea;
-    }
-    .btn-light-custom:hover {
-      background: #f1f1f1;
-    }
-
-    /* Judul */
-    h3, h4, h5 {
-      color: var(--green-dark);
-      font-weight: bold;
-    }
-
-    summary {
-      color: var(--green-dark);
-    }
-
-  </style>
+    <title>Hasil Diagnosa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
-<body>
-
-<!-- NAVBAR (dibuat sesuai index: hijau gelap) -->
-<nav class="navbar navbar-expand-lg" style="background-color: var(--green-dark);">
-  <div class="container">
-    <a class="navbar-brand" href="/">CORNFIX</a>
-
-    <div>
-      <a href="/" class="btn btn-light-custom btn-sm">Home</a>
- 
-    </div>
-  </div>
-</nav>
+<body class="bg-light">
 
 <div class="container mt-4">
 
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h3>Hasil Diagnosa</h3>
-
-      {% if model_probs %}
-        <h5 class="mt-4">Prediksi Model (Opsional)</h5>
-        <ul>
-          {% for k,v in model_probs.items() %}
-            <li>{{ k }} : {{ "%.3f"|format(v) }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-
-      <h5 class="mt-4">Forward Chaining + Certainty Factor</h5>
-
-      {% if results %}
-        {% for r in results %}
-          <div class="card card-result shadow-sm mt-3 p-3">
-            <h4>{{ r.name }}</h4>
-            <p class="text-muted">{{ r.description }}</p>
-
-            <div><strong>Certainty Factor:</strong> {{ "%.4f"|format(r.cf) }}</div>
-
-            <details class="mt-2">
-              <summary style="cursor:pointer;">Lihat Evidence</summary>
-              <ul class="mt-2">
-                {% for sk,sv in r.conditions_evidence.items() %}
-                  <li>{{ sk }} → {{ "%.4f"|format(sv) }}</li>
-                {% endfor %}
-              </ul>
-            </details>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div class="alert alert-warning mt-3">
-          Tidak ada rule yang cocok. Coba tambahkan keyakinan gejala lain.
+    {% if best %}
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4>Hasil Diagnosa Akhir</h4>
         </div>
-      {% endif %}
+
+        <div class="card-body text-center">
+
+            <h5 class="fw-bold">{{ best.name}}</h5>
+
+            <div class="alert alert-success mt-3">
+                <strong>Tingkat Keyakinan (Certainty Factor)</strong><br>
+                <span class="fs-4">
+                    {{ (best.cf * 100) | round(2) }} %
+                </span>
+            </div>
+
+            <p class="mt-3">
+                {{ best.description }}
+            </p>
+
+            <hr>
+
+            <h6 class="text-start">Detail Perhitungan Gejala:</h6>
+            <ul class="list-group text-start">
+                {% for s, v in best.conditions_evidence.items() %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>{{ symptoms[s] }}</span>
+                    <span class="badge bg-secondary">
+                        {{ v | round(2) }}
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <a href="/diagnose" class="btn btn-secondary mt-4">
+                Diagnosa Lagi
+            </a>
+        </div>
     </div>
-  </div>
+
+    {% else %}
+    <div class="alert alert-warning">
+        Tidak ada penyakit yang cocok berdasarkan gejala yang dipilih.
+    </div>
+    <a href="/diagnose" class="btn btn-secondary mt-3">
+        Diagnosa Lagi
+    </a>
+    {% endif %}
 
 </div>
 

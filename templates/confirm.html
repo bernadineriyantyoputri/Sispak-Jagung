@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Screening Awal</title>
+    <title>Konfirmasi Gejala</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 
 <div class="container mt-4">
+
     <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4>Screening Awal Gejala</h4>
+        <div class="card-header bg-warning">
+            <h4>Konfirmasi Gejala Tambahan</h4>
         </div>
 
         <div class="card-body">
 
-            <form method="POST" enctype="multipart/form-data">
+            <h5>Kandidat Penyakit:</h5>
+            <ul>
+                {% for n in candidate_names %}
+                    <li>{{ n }}</li>
+                {% endfor %}
+            </ul>
 
-                <h5>Pilih tingkat gejala</h5>
-                <small>Pilih salah satu: Ya / Mungkin / Tidak</small>
-                <hr>
+            <hr>
+            <form method="POST">
 
-                {% for key, label in symptoms.items() %}
+                {% for key, label in important_symptoms.items() %}
                 <div class="mb-3 border-bottom pb-2">
                     <label class="form-label fw-bold">{{ label }}</label><br>
 
-                    <label>
+                    <label class="me-3">
                         <input type="radio" name="{{ key }}" value="1.0"> Ya
                     </label>
 
-                    <label class="ms-3">
+                    <label class="me-3">
                         <input type="radio" name="{{ key }}" value="0.5"> Mungkin
                     </label>
 
-                    <label class="ms-3">
+                    <label>
                         <input type="radio" name="{{ key }}" value="0" checked> Tidak
                     </label>
                 </div>
                 {% endfor %}
 
-                <hr>
-                <h5>Upload Gambar (opsional)</h5>
-                <input type="file" name="image" class="form-control">
-
-                <button class="btn btn-success mt-3 w-100">Lanjutkan Diagnosa</button>
+                <button class="btn btn-primary w-100 mt-2">Lanjutkan Diagnosa</button>
             </form>
 
         </div>
     </div>
+
 </div>
 
 </body>
