@@ -1,40 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Register | CornFix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-dark: #0b3d02;
+            --corn-yellow: #ffde59;
+            --pastel-green: #def4d1;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+
+            /* BACKGROUND IMAGE */
+            background: url("/static/background_cornfix.jpg")
+                        no-repeat center center / cover;
+        }
+
+        .login-wrapper {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card {
+            width: 420px;
+            padding: 35px;
+            border-radius: 22px;
+
+            /* Glassmorphism */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--green-dark);
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        .form-control {
+            border-radius: 12px;
+            padding: 10px 14px;
+            border: 1.5px solid #dfe7db;
+        }
+
+        .form-control:focus {
+            border-color: var(--green-dark);
+            box-shadow: 0 0 0 0.2rem rgba(11, 61, 2, 0.15);
+        }
+
+        .btn-login {
+            background: var(--corn-yellow);
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 18px;
+            padding: 12px;
+            border-radius: 16px;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: #f7d64f;
+        }
+
+        .register-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: var(--green-dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-5" style="max-width: 450px;">
+<div class="login-wrapper">
 
-    <div class="card shadow">
-        <div class="card-header bg-success text-white">
-            <h4>Register</h4>
+    <div class="login-card">
+
+        <h1 class="login-title">CornFix</h1>
+        <p class="login-subtitle">Registrasi untuk mulai diagnosa penyakit jagung</p>
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+            </div>
+
+            <button type="submit" class="btn btn-login w-100">
+                Register
+            </button>
+        </form>
+
+        <div class="register-text">
+            Sudah punya akun?
+            <a href="/login">Login</a>
         </div>
 
-        <div class="card-body">
-
-            <form method="POST">
-                <div class="mb-3">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-
-                <button class="btn btn-primary w-100">Register</button>
-            </form>
-
-            <p class="text-center mt-3">
-                Sudah punya akun? <a href="/login">Login</a>
-            </p>
-
-        </div>
     </div>
 
 </div>

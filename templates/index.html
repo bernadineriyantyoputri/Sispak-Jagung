@@ -1,52 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Screening Awal</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body class="bg-light">
+    <meta charset="UTF-8">
+    <title>Screening Awal | CornFix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4>Screening Awal Gejala</h4>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-dark: #0b3d02;
+            --corn-yellow: #ffde59;
+            --pastel-green: #def4d1;
+            --bg-soft: #f8faf6;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: var(--bg-soft); 
+
+             /* BACKGROUND FOTO */
+            background: url("/static/latar jagung.jpg")
+                        no-repeat center center / cover;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card-main {
+            background: #ffffff;
+            border-radius: 26px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .card-header-custom {
+            background: var(--green-dark);
+            color: #fff;
+            padding: 28px 40px;
+        }
+
+        .card-header-custom h3 {
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .card-header-custom p {
+            margin: 6px 0 0;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .symptom-card {
+            border: 1.5px solid #e5efe1;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 16px;
+            transition: 0.2s ease;
+        }
+
+        .symptom-card:hover {
+            background: #f4f9f1;
+            border-color: var(--pastel-green);
+        }
+
+        .symptom-title {
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+
+        .radio-group label {
+            margin-right: 25px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .radio-group input {
+            margin-right: 6px;
+        }
+
+        .upload-box {
+            border: 2px dashed #cfe3c8;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            background: #f9fcf7;
+        }
+
+        .upload-box h6 {
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .btn-next {
+            background: var(--corn-yellow);
+            color: #1a1a1a;
+            font-weight: 800;
+            font-size: 18px;
+            padding: 14px;
+            border-radius: 18px;
+            border: none;
+        }
+
+        .btn-next:hover {
+            background: #f6d64d;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="card-main">
+
+        <div class="card-header-custom">
+            <h3>Screening Awal Gejala</h3>
+            <p>Pilih tingkat keyakinan untuk setiap gejala yang dialami tanaman jagung</p>
         </div>
 
         <div class="card-body">
 
             <form method="POST" enctype="multipart/form-data">
 
-                <h5>Pilih tingkat gejala</h5>
-                <small>Pilih salah satu: Ya / Mungkin / Tidak</small>
-                <hr>
+    <div class="row">
+        {% for key, label in symptoms.items() %}
+        <div class="col-md-6">
+            <div class="symptom-card">
+                <div class="symptom-title">{{ label }}</div>
 
-                {% for key, label in symptoms.items() %}
-                <div class="mb-3 border-bottom pb-2">
-                    <label class="form-label fw-bold">{{ label }}</label><br>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="{{ key }}" value="1.0">
+                        Ya
+                    </label>
 
                     <label>
-                        <input type="radio" name="{{ key }}" value="1.0"> Ya
+                        <input type="radio" name="{{ key }}" value="0.5">
+                        Mungkin
                     </label>
 
-                    <label class="ms-3">
-                        <input type="radio" name="{{ key }}" value="0.5"> Mungkin
-                    </label>
-
-                    <label class="ms-3">
-                        <input type="radio" name="{{ key }}" value="0" checked> Tidak
+                    <label>
+                        <input type="radio" name="{{ key }}" value="0" checked>
+                        Tidak
                     </label>
                 </div>
-                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
-                <hr>
-                <h5>Upload Gambar (opsional)</h5>
-                <input type="file" name="image" class="form-control">
+    <button type="submit" class="btn btn-next w-100 mt-4">
+        Lanjutkan Diagnosa
+    </button>
 
-                <button class="btn btn-success mt-3 w-100">Lanjutkan Diagnosa</button>
-            </form>
+</form>
+
 
         </div>
     </div>
+
 </div>
 
 </body>

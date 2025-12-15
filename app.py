@@ -242,7 +242,9 @@ def register():
 def logout():
     session.clear()
     flash("Logout berhasil.", "success")
-    return redirect(url_for("login"))
+    return redirect(url_for("login")) 
+
+
 
 # -------------------------------------------------------
 # RUN APP
