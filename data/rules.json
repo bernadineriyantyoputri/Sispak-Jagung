@@ -7,9 +7,9 @@
       "description": "Massa spora hitam pada bunga atau tongkol, tassel abnormal, tongkol terdeformasi.",
       "rule_cf": 0.9,
       "conditions": [
-        {"symptom": "tassel_abnormal", "weight": 0.8},
-        {"symptom": "black_spore_masses", "weight": 1.0},
-        {"symptom": "ear_deformed_or_no_grains", "weight": 0.7}
+        { "symptom": "tassel_abnormal", "weight": 0.32 },
+        { "symptom": "black_spore_masses", "weight": 0.40 },
+        { "symptom": "ear_deformed_or_no_grains", "weight": 0.28 }
       ]
     },
     {
@@ -19,9 +19,9 @@
       "description": "Garis-garis kuning pada daun, klorosis, pertumbuhan kerdil.",
       "rule_cf": 0.85,
       "conditions": [
-        {"symptom": "chlorosis_or_yellow_streaks", "weight": 0.9},
-        {"symptom": "small_round_spots_on_young_leaves", "weight": 0.6},
-        {"symptom": "stunted_plants", "weight": 0.7}
+        { "symptom": "chlorosis_or_yellow_streaks", "weight": 0.41 },
+        { "symptom": "small_round_spots_on_young_leaves", "weight": 0.27 },
+        { "symptom": "stunted_plants", "weight": 0.32 }
       ]
     },
     {
@@ -31,9 +31,9 @@
       "description": "Bercak coklat-abu memanjang sejajar tulang daun, biasanya muncul di daun bawah.",
       "rule_cf": 0.88,
       "conditions": [
-        {"symptom": "elongated_brown_gray_spots", "weight": 0.9},
-        {"symptom": "spots_parallel_to_veins", "weight": 0.7},
-        {"symptom": "lower_leaves_first", "weight": 0.6}
+        { "symptom": "elongated_brown_gray_spots", "weight": 0.41 },
+        { "symptom": "spots_parallel_to_veins", "weight": 0.32 },
+        { "symptom": "lower_leaves_first", "weight": 0.27 }
       ]
     },
     {
@@ -43,8 +43,8 @@
       "description": "Lesi berbentuk gelendong berwarna coklat kehitaman pada daun, dimulai dari daun bawah.",
       "rule_cf": 0.9,
       "conditions": [
-        {"symptom": "spindle_shaped_necrotic_lesions", "weight": 1.0},
-        {"symptom": "lower_leaves_first", "weight": 0.7}
+        { "symptom": "spindle_shaped_necrotic_lesions", "weight": 0.59 },
+        { "symptom": "lower_leaves_first", "weight": 0.41 }
       ]
     },
     {
@@ -54,9 +54,9 @@
       "description": "Kelobot pucat tidak beraturan, pertumbuhan putih seperti kapas antar biji, bintik hitam pycnidia.",
       "rule_cf": 0.92,
       "conditions": [
-        {"symptom": "bleached_areas_on_husks", "weight": 0.8},
-        {"symptom": "white_cottony_growth_between_kernels", "weight": 1.0},
-        {"symptom": "black_pycnidia_on_kernels", "weight": 0.8}
+        { "symptom": "bleached_areas_on_husks", "weight": 0.31 },
+        { "symptom": "white_cottony_growth_between_kernels", "weight": 0.38 },
+        { "symptom": "black_pycnidia_on_kernels", "weight": 0.31 }
       ]
     }
   ],
@@ -80,4 +80,3 @@
     "black_pycnidia_on_kernels": "Bintik hitam kecil (pycnidia) pada biji"
   }
 }
-  
